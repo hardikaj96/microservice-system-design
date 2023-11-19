@@ -14,25 +14,25 @@ help: # Show help for each of the Makefile recipes.
 	@grep -E '^[a-zA-Z0-9 -]+:.*#'  Makefile | sort | while read -r l; do printf "\033[1;32m$$(echo $$l | cut -f 1 -d':')\033[00m:$$(echo $$l | cut -f 2- -d'#')\n"; done
 
 
+.PHONY: test
+test: # 🧪 Run tests in poetry shell
+	cd ./tests && poetry shell && poetry install && pytest && poetry env remove
+
+
+
 .PHONY: test-services
 test-services: # 🧪 Run tests in services container
 	$(DOCKER_COMPOSE_RUN_MAIN) $(POETRY_RUN_CMD) pytest --cov=app --cov-report term-missing && $(DOCKER_COMPOSE_RUN_SENTIMENT_ANALYSIS) $(POETRY_RUN_CMD) pytest --cov=app --cov-report term-missing && $(DOCKER_COMPOSE_RUN_WORD_COUNT) $(POETRY_RUN_CMD) pytest --cov=app --cov-report term-missing && $(DOCKER_COMPOSE_RUN_ENTITY_RECOGNITION) $(POETRY_RUN_CMD) pytest --cov=app --cov-report term-missing
 
 
-
 .PHONY: shell 
-shell: # get a bash shell in the container 
-	$(DOCKER_COMPOSE_RUN_CMD) bash 
+shell: # get a bash shell in the main service container 
+	$(DOCKER_COMPOSE_RUN_MAIN) bash 
 
 
 .PHONY: test-verbose
 test-verbose: # 🧪 Run tests with verbose output (pytest -s)
-	$(DOCKER_COMPOSE_RUN_CMD) $(POETRY_RUN_CMD) pytest --cov=app --cov-report term-missing -s
-
-.PHONY: build-docker
-build-docker: # Start the API server in docker
-	$(DOCKER_COMPOSE_CMD) build
-
+		$(DOCKER_COMPOSE_RUN_MAIN) $(POETRY_RUN_CMD) pytest --cov=app --cov-report term-missing -s && $(DOCKER_COMPOSE_RUN_SENTIMENT_ANALYSIS) $(POETRY_RUN_CMD) pytest --cov=app --cov-report term-missing -s && $(DOCKER_COMPOSE_RUN_WORD_COUNT) $(POETRY_RUN_CMD) pytest --cov=app --cov-report term-missing -s && $(DOCKER_COMPOSE_RUN_ENTITY_RECOGNITION) $(POETRY_RUN_CMD) pytest --cov=app --cov-report term-missing -s
 
 .PHONY: logs 
 logs: # Start the API server in docker
