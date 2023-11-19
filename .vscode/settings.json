@@ -1,0 +1,30 @@
+{
+  "editor.defaultFormatter": null,
+  "python.languageServer": "Pylance",
+  "python.formatting.provider": "black",
+  "editor.formatOnSave": true,
+  // ignore noise
+  "search.exclude": {
+    "**/.env": true
+  },
+  "pylint.severity": {
+    "convention": "Error",
+    "error": "Error",
+    "fatal": "Error",
+    "refactor": "Error",
+    "warning": "Error"
+  },
+  // this makes `import-error` warnings work correctly
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
+  "python.analysis.indexing": true,
+  "files.associations": {
+    "pylintrc": "ini"
+  },
+  "python.analysis.inlayHints.functionReturnTypes": true,
+  "python.analysis.inlayHints.variableTypes": true
+}

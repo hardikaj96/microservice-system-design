@@ -1,0 +1,42 @@
+[tool.poetry]
+name = "app"
+version = "0.1.0"
+description = "Microservice System Design for Take Home Technical Test."
+authors = ["Hardik Jivani <hardikaj96@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.104.1"
+psycopg2-binary = "^2.9.9"
+uvicorn = "^0.24.0.post1"
+pydantic = "^2.5.0"
+sqlalchemy = "^2.0.23"
+pydantic-settings = "^2.1.0"
+httpx = "^0.25.1"
+nltk = "^3.8.1"
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.11.0"
+isort = "^5.12.0"
+pytest = "^7.4.3"
+pytest-cov = "^4.1.0"
+pyright = "^1.1.335"
+pylint = "^3.0.2"
+pylint-pydantic = "^0.3.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+app = "app.main:start"
+
+[tool.isort]
+profile = "black"
+
+[virtualenvs]
+in-project = true
+
+[tool.black]
+line-length = 99
