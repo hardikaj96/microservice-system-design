@@ -1,9 +1,9 @@
 POETRY_RUN_CMD := poetry run
-DOCKER_COMPOSE_CMD := docker compose
-DOCKER_COMPOSE_RUN_MAIN := docker compose run app
-DOCKER_COMPOSE_RUN_SENTIMENT_ANALYSIS := docker compose run sentiment_analysis
-DOCKER_COMPOSE_RUN_WORD_COUNT := docker compose run word_count
-DOCKER_COMPOSE_RUN_ENTITY_RECOGNITION := docker compose run entity_recognition
+DOCKER_COMPOSE_CMD := docker-compose
+DOCKER_COMPOSE_RUN_MAIN := docker-compose run app
+DOCKER_COMPOSE_RUN_SENTIMENT_ANALYSIS := docker-compose run sentiment_analysis
+DOCKER_COMPOSE_RUN_WORD_COUNT := docker-compose run word_count
+DOCKER_COMPOSE_RUN_ENTITY_RECOGNITION := docker-compose run entity_recognition
 
 default: help
 
