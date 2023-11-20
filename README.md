@@ -78,6 +78,7 @@ To run external tests, use the following command: (This will be ran inside Poetr
 ```bash
 make test
 ```
+Alternate solution: if Poetry cannot be installed, one can just install the dependencies from the `tests/requirements.txt` file and just run the tests using `pytest` inside `tests` directory. 
 
 To run each internal service tests within the Docker containers:
 
