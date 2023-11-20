@@ -1,6 +1,6 @@
 # Microservices Architecture
 
-This project consists of four microservices (A, B, C, D), with service A exposed externally. The services communicate internally, and they are orchestrated using Docker Compose.
+This project consists of four microservices (Main Service, Sentiment Analysis, Word Count, Entity Recognition), with Main Service exposed externally. The services communicate internally, and they are orchestrated using Docker Compose.
 
 ## Table of Contents
 - [Overview](#overview)
