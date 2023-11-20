@@ -20,3 +20,13 @@ def test_recognize() -> None:
     )
     assert response.status_code == 200
     assert response.json()["result"] == [{"entity": "the", "label": "PRODUCT"}]
+
+
+def test_recognize() -> None:
+    response = client.post(
+        "/recognize",
+        headers={"Content-Type": "application/json"},
+        content=json.dumps({"text": ""}),
+    )
+    assert response.status_code == 200
+    assert response.json()["result"] == [{"entity": "NULL", "label": "PRODUCT"}]

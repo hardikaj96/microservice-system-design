@@ -30,3 +30,13 @@ def test_analyze_negative() -> None:
     )
     assert response.status_code == 200
     assert response.json()["result"] == "negative"
+
+
+def test_empty_text() -> None:
+    response = client.post(
+        "/analyze",
+        headers={"Content-Type": "application/json"},
+        content=json.dumps({"text": ""}),
+    )
+    assert response.status_code == 200
+    assert response.json()["result"] == "positive"
