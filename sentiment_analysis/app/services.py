@@ -1,5 +1,18 @@
-def analyze_sentiment(text):
-    sum_of_ord = sum(ord(char) for char in text)
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
 
-    # Map the hash value to 0 or 1 using modulo operation
-    return "negative" if sum_of_ord % 2 else "positive"
+
+def analyze_sentiment(text):
+    # Create a SentimentIntensityAnalyzer object
+    sid = SentimentIntensityAnalyzer()
+
+    # Get the sentiment scores for the input text
+    sentiment_scores = sid.polarity_scores(text)
+
+    # Determine the sentiment label based on the compound score
+    if sentiment_scores["compound"] >= 0.05:
+        sentiment = "Positive"
+    elif sentiment_scores["compound"] <= -0.05:
+        sentiment = "Negative"
+    else:
+        sentiment = "Neutral"
+    return sentiment

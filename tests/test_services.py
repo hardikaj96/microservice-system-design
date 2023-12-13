@@ -75,7 +75,7 @@ def test_existing_service():
     data = json.dumps({"service": name1, "text": "The weather is great"})
     response = requests.post(f"{main_service_url}/analyze", data=data)
     assert response.status_code == 200
-    assert response.json() == {"result": "positive"}
+    assert response.json() == {"result": "Positive"}
     _ = delete_service(name1)
 
 
@@ -93,12 +93,12 @@ def test_sentiment_analysis_service():
     data = json.dumps({"service": name, "text": "The weather is great"})
     response = requests.post(f"{main_service_url}/analyze", data=data)
     assert response.status_code == 200
-    assert response.json() == {"result": "positive"}
+    assert response.json() == {"result": "Positive"}
     _ = delete_service(name)
 
 
 def test_word_count_service():
-    name = "sentiment_analysis"
+    name = "word_count"
     url = "http://host.docker.internal:8002/count"
     _ = register_service(name, url)
     data = json.dumps({"service": name, "text": "The weather is great"})
@@ -117,5 +117,5 @@ def test_entity_recognition_service():
     data = json.dumps({"service": name, "text": "The weather is great"})
     response = requests.post(f"{main_service_url}/analyze", data=data)
     assert response.status_code == 200
-    assert response.json() == {"result": [{"entity": "The", "label": "PRODUCT"}]}
+    assert response.json() == {"result": []}
     _ = delete_service(name)

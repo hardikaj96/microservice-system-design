@@ -19,7 +19,7 @@ def test_analyze() -> None:
         content=json.dumps({"text": "the weather is good"}),
     )
     assert response.status_code == 200
-    assert response.json()["result"] == "positive"
+    assert response.json()["result"] == "Positive"
 
 
 def test_analyze_negative() -> None:
@@ -29,7 +29,7 @@ def test_analyze_negative() -> None:
         content=json.dumps({"text": "the weather is bad!"}),
     )
     assert response.status_code == 200
-    assert response.json()["result"] == "negative"
+    assert response.json()["result"] == "Negative"
 
 
 def test_empty_text() -> None:
@@ -39,4 +39,4 @@ def test_empty_text() -> None:
         content=json.dumps({"text": ""}),
     )
     assert response.status_code == 200
-    assert response.json()["result"] == "positive"
+    assert response.json()["result"] == "Neutral"

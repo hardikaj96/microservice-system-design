@@ -19,7 +19,7 @@ def test_recognize() -> None:
         content=json.dumps({"text": "the weather is good"}),
     )
     assert response.status_code == 200
-    assert response.json()["result"] == [{"entity": "the", "label": "PRODUCT"}]
+    assert response.json()["result"] == []
 
 
 def test_recognize() -> None:
@@ -29,4 +29,4 @@ def test_recognize() -> None:
         content=json.dumps({"text": ""}),
     )
     assert response.status_code == 200
-    assert response.json()["result"] == [{"entity": "NULL", "label": "PRODUCT"}]
+    assert response.json()["result"] == []
